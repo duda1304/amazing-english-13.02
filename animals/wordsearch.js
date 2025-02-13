@@ -16,7 +16,7 @@ $(document).ready(function () {
   ["DOG","CAT", "TURTLE","PARROT","HAMSTER","GOLDFISH","RABBIT","CANARY"]
   ];
   
-  const solution = [[{9 : "F"}, {19 : "A"}, {29 : "R"}, {39 : "M"}], [{3 : "S"}, {4 : "A"}, {5 : "V"}, {6 : "A"}, {7 : "N"}, {8 : "N"}, {9 : "A"}], [{5 : "H"}, {6 : "O"}, {7 : "U"}, {8 : "S"}, {9 : "E"}]]
+  const solution = [[{9 : "F"}, {19 : "A"}, {29 : "R"}, {39 : "M"}], [{3 : "S"}, {4 : "A"}, {5 : "V"}, {6 : "A"}, {7 : "N"}, {8 : "N"}, {9 : "A"}], [{9 : "H"}, {19 : "O"}, {29 : "U"}, {39 : "S"}, {49 : "E"}]]
 
   const predifened_grid = [
     [
@@ -102,7 +102,7 @@ $(document).ready(function () {
       },
       {
         "word" : "parrot",
-        "letters" : [19,29,39,49,59,69]
+        "letters" : [84,85,86,87,88,89]
       },
       {
         "word" : "turtle",
