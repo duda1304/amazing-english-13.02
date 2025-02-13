@@ -1,0 +1,74 @@
+<main
+  id="select-answer"
+  class="flex-column align-items-center justify-content-center content-activity p-2" style="display: flex;"
+>
+  <!-- instructions -->
+  <!-- <div
+    class="bg-light p-1 p-md-2 border border-2 rounded-2 border-primary text-center instructions"
+  >
+    <p class="instruction-en mb-1">
+      Find the name for the following animals.
+    </p>
+    <p class="instruction-fr mb-0">
+      Trouve le nom pour désigner les animaux suivants.
+    </p>
+  </div> -->
+  <div
+    class="text-center mb-lg-5"
+  >
+    <!-- image -->
+    <img
+      src="./media/animal_cards/cow.png"
+      alt="cow"
+      class="img-fluid mb-2 mb-lg-3 select-answer-image"
+      id="animal-image"
+    />
+    <!-- buttons choices -->
+    <div class="d-flex justify-content-between">
+      <button
+        class="flex-fill mx-1 p-1 p-lg-2 px-2 border border-3 rounded-2 border-white fw-bold answer-btn"
+        id="answer1"
+      >
+        cow
+      </button>
+      <button
+        class="flex-fill mx-1 p-1 p-lg-2 px-2 border border-3 rounded-2 border-white fw-bold answer-btn"
+        id="answer2"
+      >
+        sheep
+      </button>
+      <button
+        class="flex-fill mx-1 p-1 p-lg-2 px-2 border border-3 rounded-2 border-white fw-bold answer-btn"
+        id="answer3"
+      >
+        horse
+      </button>
+    </div>
+     <!-- buttons navigation -->
+     <div class="d-flex select-answer-navigation mt-2 mt-lg-3">
+      <button
+        type="button"
+        class="btn btn-secondary btn-blue flex-fill mx-1 py-lg-2 py-sm-1"
+      >
+        activities home page
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary btn-blue flex-fill mx-1 py-lg-2 py-sm-1"
+      >
+        home page
+      </button>
+    </div>
+  </div>
+  <div id="instructionModal" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content">
+        <div class="modal-body d-flex flex-column justify-content-around p-3 text-center">
+          <button type="button" class="btn-close align-self-end mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
+          <p class="instruction-en mb-3"></p>
+          <p class="instruction-fr"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

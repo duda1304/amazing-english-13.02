@@ -1,0 +1,45 @@
+<main
+  id="animal-drag-drop"
+  class="flex-column align-items-center justify-content-center content-activity p-2"
+  style="display: flex"
+> 
+  <!-- main part -->
+  <div class="container drag-drop-container">
+    <div class="ratio ratio-1x1" id="animalContainer">
+      <img
+        src="./media/animals_drag_drop/cow.png"
+        alt="animal 1"
+        class="img-fluid drag-drop-img position-absolute top-50 start-50 translate-middle"
+      />
+      <div class="d-flex align-items-end justify-content-center p-1" draggable="false"></div>
+    </div>
+  </div>
+  </div>
+  <!-- buttons navigation -->
+  <div class="d-flex flex-row justify-content-between drag-drop-navigation mt-lg-4 mt-sm-2">
+    <button
+      type="button"
+      class="btn btn-secondary btn-blue flex-fill mx-1 py-lg-1 py-sm-1"
+    >
+      activities home page
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary btn-blue flex-fill mx-1 py-lg-1 py-sm-1"
+    >
+      home page
+    </button>
+  </div>
+   <!-- instructions -->
+   <div id="instructionModal" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content">
+        <div class="modal-body d-flex flex-column justify-content-around p-3 text-center">
+          <button type="button" class="btn-close align-self-end mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
+          <p class="instruction-en mb-3"></p>
+          <p class="instruction-fr"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,69 @@
+<main
+  id="wordsearch"
+  class="flex-column align-items-center justify-content-center content-activity pb-sm-3 pt-sm-2" style="display: flex;"
+>
+  <!-- Grid -->
+  <div class="row justify-content-center pt-sm-3 mt-sm-3 grid">
+    <div class="col d-flex flex-column justify-content-center pe-5 pe-sm-2 pe-md-2 pe-lg-4">
+      <div id="grid"></div>
+        <!-- Buttons Navigation -->
+  <div class="d-flex justify-content-evenly wordsearch-navigation mt-3">
+    <div class="d-flex">
+      <button type="button" class="btn btn-secondary btn-blue mx-1 py-lg-2 py-sm-1">
+        activities home page
+      </button>
+      <button type="button" class="btn btn-secondary btn-blue mx-1 py-lg-2 py-sm-1">
+        home page
+      </button>
+    </div>
+  </div>
+    </div>
+
+    <!-- Words -->
+    <div class="col d-flex justify-content-center align-items-center ps-lg-0 ps-md-2">
+      <ul id="words" class="list-unstyled"></ul>
+    </div>
+  </div>
+
+  <!-- instructions -->
+  <div id="instructionModal" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content">
+        <div class="modal-body d-flex flex-column justify-content-around p-3 text-center">
+          <button type="button" class="btn-close align-self-end mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
+          <p class="instruction-en mb-3"></p>
+          <p class="instruction-fr"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- congrats -->
+  <div id="congratsModal" class="modal d-none" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content">
+        <div class="modal-body d-flex flex-column justify-content-around p-3 text-center">
+          <button type="button" class="btn-close align-self-end mb-3" data-bs-dismiss="modal" aria-label="Close"></button>
+          <p class="instruction-en mb-3"></p>
+          <p class="instruction-fr"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- question -->
+  <div id="questionModal" class="modal" tabindex="-1" data-bs-backdrop="static" role="dialog" aria-labelledby="question-modal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+      <div class="modal-content question-modal-body">
+        <div id="preview"></div>
+        <div class="modal-body d-flex flex-column justify-content-around p-3 text-center">
+          <p class="instruction-en mb-3"></p>
+          <p class="instruction-fr"></p>
+          <div class="d-flex flex-row justify-content-center" id="answer">
+              <input type="text" class="form-control old-browser-version">
+              <label type="button" class="form-label old-browser-version ms-3" id="check_answer" style="width: 30%">Check</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>

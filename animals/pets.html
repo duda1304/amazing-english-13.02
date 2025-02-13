@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animal story</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Fredoka:wght@300;600&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css?v=106" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- CONFETI ANIMATION -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/2.9.3/tsparticles.min.js"
+      integrity="sha512-+YPbXItNhUCZR3fn5KeWPtJrXuoqRYQ4Gd1rIjEFG+h8UJYekebhOMh84vv7q+Y1sy5kdIIVtfftehCiigriMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/2.9.3/tsparticles.bundle.js"
+      integrity="sha512-4BvpuuqtfGmY1pf2gPR83PY7D7nK449zHkaI9mNtFVafP1ORUz7ZS40l3YWpOhEPKJQjwaX7Y+BOqcL3qajLFw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/2.9.3/tsparticles.bundle.min.js"
+      integrity="sha512-4zLdYOE9r8x0esJk0GyNtEZy/N/CIeEF/vW90cg31PdMIpIEMV5qwnV7Jd4isRfBD1ivzpcV7dDELN+A/j6MiA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/2.9.3/tsparticles.js"
+      integrity="sha512-YFGo9Ot/FtdXJC0ZSr8EZnsGUxPP1XNONbe10xbdLQFPKdimCEy9f/B4IBhv3SbagoBeBZ4LzLkhXZuN/1oalg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body>
+    <main id="content-activity-homepage" class="container-fluid">
+      <div class="container-md" id="homepage-container">
+        <!-- listen button -->
+        <a href="pets_story.html?v=106">
+          <img
+            src="./media/homepage/listen_story_button.png"
+            alt="listen to the story"
+            id="listen-button"
+          />
+        </a>
+        <!-- header -->
+        <header class="text-center row" id="homepage-header">
+          <h1 class="fs-3">The pets</h1>
+        </header>
+        <!-- cards -->
+        <div
+          class="container px-lg-5 py-lg-3 py-md-1 py-sm-1 px-sm-0 card-container"
+        >
+          <div class="row mb-3 px-sm-4 px-md-5">
+            <div class="col-3">
+              <img src="./media/homepage/cat.png" class="img-fluid" alt="cat" />
+            </div>
+            <div class="col-3">
+              <img src="./media/homepage/dog.png" class="img-fluid" alt="dog" />
+            </div>
+            <div class="col-3">
+              <img
+                src="./media/homepage/parrot.png"
+                class="img-fluid"
+                alt="parrot"
+              />
+            </div>
+            <div class="col-3">
+              <img
+                src="./media/homepage/canary.png"
+                class="img-fluid"
+                alt="canary"
+              />
+            </div>
+          </div>
+          <div class="row px-sm-4 px-md-5">
+            <div class="col-3">
+              <img
+                src="./media/homepage/hamster.png"
+                class="img-fluid"
+                alt="hamster"
+              />
+            </div>
+            <div class="col-3">
+              <img
+                src="./media/homepage/goldfish.png"
+                class="img-fluid"
+                alt="goldfish"
+              />
+            </div>
+            <div class="col-3">
+              <img
+                src="./media/homepage/turtle.png"
+                class="img-fluid"
+                alt="turtle"
+              />
+            </div>
+            <div class="col-3">
+              <img
+                src="./media/homepage/rabbit.png"
+                class="img-fluid"
+                alt="rabbit"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- button -->
+        <div
+          class="d-flex flex-row justify-content-center ps-3 pe-3 navigation-buttons mt-lg-2"
+        >
+          <a href="wild_animals.html">
+            <button
+              class="me-3 px-2 px-md-3 px-lg-3 py-1 py-md-2 py-lg-2 fw-bold navigation-buttons"
+              id="prev-button"
+            >
+              previous page
+            </button>
+            <a href="activities.html">
+              <button
+                class="me-3 px-2 px-md-3 px-lg-3 py-1 py-md-2 py-lg-2 fw-bold navigation-buttons"
+                id="prev-button"
+              >
+                activities home page
+              </button>
+            </a>
+          </a>
+        </div>
+      </div>
+    </main>
+    <!-- orientation warning -->
+    <div id="orientationWarning" class="p-3">
+      <h1 class="text-white fst-italic text-center display-4">
+        Bienvenue ! Pour une meilleure expérience utilisateur, merci d'utiliser
+        le mode paysage de votre appareil.
+      </h1>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="../api/config.js"></script>
+    <script src="../api/checkToken.js"></script>
+    <script src="../api/checkUserToken.js"></script>
+    <script src="../api/updateSubjectPronounsStatus.js"></script>
+    <script src="../api/saveGameResult.js"></script>
+    <script src="../api/saveCurrentSublevelProgress.js"></script>
+    <script src="../api/getOverallSubjectPronounsStatus.js"></script>
+    <script>
+      function playSound(src) {
+        if ($("audio").length === 0) {
+          $("main").append('<audio type="audio/mpeg"></audio>');
+        }
+        if (!e) var e = window.event;
+        if (e) e.stopPropagation();
+        $("audio")[0].pause();
+        $("audio").attr("src", src);
+        $("audio")[0].play();
+      }
+
+      $('.card-container img').on('click', function() {
+        const name_array = $(this).attr('src').split('/');
+        const src = name_array[name_array.length - 1].toLocaleUpperCase().replace('PNG', 'mp3');
+        playSound(`./audio/animal_cards/${src}`)
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE HTML>
+
+<html >
+	<head>
+        <title>Amazing english</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        
+        <link rel="icon" href="./img/logo.ico" type="image/x-icon">
+
+        <!-- Bootstrap 5 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="style.css"></head>
+
+        <!-- Font awesome icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- jQUERY -->
+        <script src="./js/jquery-3.6.3.min.js"></script>
+        
+        </head>
+        <body onload="checkData()">
+            <div id="main" class="homescreen-secondphase">
+                    <div id="content" class="container-fluid">
+                        <ul class="menu d-flex flex-row pt-4 float-end align-items-center">
+                            <li class="me-3 me-lg-5 context-menu d-none" id="game-rules-link">Les règles du jeu</li>
+                            <li class="me-3 me-lg-5 context-menu d-none" id="edit-account-link">Mon compte</li>
+                            <li class="me-3 me-lg-5 context-menu" id="login-link">Connexion</li>
+                            <li class="me-3 me-lg-5 context-menu" id="register-link">Créer un compte</li>
+                        </ul>
+                          <!-- Registration modal -->
+                        <div class="modal fade" id="registration-modal" tabindex="-1" role="dialog" aria-labelledby="registration-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title">Crée ton compte</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="instruction mb-3">
+                                            <p>Demande à tes parents de le faire pour toi.</p>
+                                            <p>Tous les champs sont obligatoires.</p>
+                                        </div>
+                                        <form id="registration-form">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="type" id="single" value="single" checked>
+                                                <label class="form-check-label" for="single">
+                                                    Compte utilisateur unique
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="type" id="multi" value="multi">
+                                                <label class="form-check-label" for="multi">
+                                                    Comptes multi-utilisateurs
+                                                </label>
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <input type="email" class="form-control rounded-pill" name="email" placeholder="Adresse e-mail" required>
+                                            </div>
+                                            <div class="mb-3 mt-3 position-relative input-group align-items-center">
+                                                <input type="password" class="form-control input rounded-pill" name="password" placeholder="Mot de passe" required>
+                                                <span class="position-absolute end-0 input-group-text rounded-pill" onclick="togglePassword(event);">
+                                                    <i class="fa fa-eye d-none show"></i>
+                                                    <i class="fa fa-eye-slash hide"></i>
+                                                </span>
+                                            </div>
+                                            <div class="single user-form">
+                                                <div class="mb-3 mt-3 textOnInput">
+                                                    <label>Prénom de l’enfant</label>
+                                                    <input type="text" class="form-control rounded-pill" name="name" placeholder="Prénom de l’enfant" required>
+                                                </div>
+                                                <div class="mb-3 mt-3 textOnInput">
+                                                    <label>Âge</label>
+                                                    <input type="number" class="form-control rounded-pill" min=0 max=100 name="age" placeholder="Âge" required>
+                                                </div>
+                                                <div class="choose-avatar">
+                                                    <div class="col-2">
+                                                        <img class="w-100" src="./img/panda.png"></img>
+                                                        <input type="radio" value="panda" name="avatar" checked></input>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img class="w-100" src="./img/monkey.png"></img>
+                                                        <input type="radio" value="monkey" name="avatar"></input>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <img class="w-100" src="./img/lion.png"></img>
+                                                        <input type="radio" value="lion" name="avatar"></input>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mt-3 add-to-form">
+                                                <button type="button" class="btn rounded-pill ps-5 pe-5" id="addMultiForm">+</button>
+                                                <button type="button" class="btn rounded-pill ps-5 pe-5" id="removeMultiForm">-</button>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center mt-3">
+                                                <button type="submit" class="btn rounded-pill ps-5 pe-5">Je crée mon compte</button>
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <small class="response"></small>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Login modal -->
+                        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title">Connecte-toi</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="login-form">
+                                            <div class="mb-3 mt-3">
+                                                <input type="email" class="form-control rounded-pill" name="email" placeholder="Adresse e-mail" required>
+                                            </div>
+                                            <div class="mb-3 mt-3 position-relative input-group align-items-center">
+                                                <input type="password" class="form-control input rounded-pill" name="password" placeholder="Mot de passe" required>
+                                                <span class="position-absolute end-0 input-group-text rounded-pill" onclick="togglePassword(event);">
+                                                    <i class="fa fa-eye d-none show"></i>
+                                                    <i class="fa fa-eye-slash hide"></i>
+                                                </span>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center mt-3">
+                                                <button type="submit" class="btn btn-primary rounded-pill ps-5 pe-5">Je me connecte</button>
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <small class="response"></small>
+                                            </div>
+                                        </form>
+                                        <a class="context-menu" id="forgotten-password-link"><small>Mot de passe oublié</small></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Send password recovery email modal -->
+                        <div class="modal fade" id="forgotten-password-modal" tabindex="-1" role="dialog" aria-labelledby="forgotten-password-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title">Mot de passe oublié</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="forgotten-password-form">
+                                            <div class="mb-3 mt-3">
+                                                <input type="email" class="form-control rounded-pill" name="email" placeholder="Adresse e-mail" required>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center mt-3">
+                                                <button type="submit" class="btn btn-primary rounded-pill ps-5 pe-5">Envoyer</button>
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <small class="response"></small>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Edit account modal -->
+                        <div class="modal fade" id="edit-account-modal" tabindex="-1" role="dialog" aria-labelledby="edit-account-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title">Mon compte</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="edit-account-form">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="type" id="single_edit" value="single" disabled>
+                                                <label class="form-check-label" for="single_edit">
+                                                    Compte utilisateur unique
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="type" id="multi_edit" value="multi" disabled>
+                                                <label class="form-check-label" for="multi_edit">
+                                                    Comptes multi-utilisateurs
+                                                </label>
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <input type="email" class="form-control rounded-pill" name="email" placeholder="Adresse e-mail" required>
+                                            </div>
+                                            <div class="mb-5 mt-3 position-relative input-group align-items-center">
+                                                <input type="password" class="form-control input rounded-pill" name="password" placeholder="Nouveau mot de passe">
+                                                <span class="position-absolute end-0 input-group-text rounded-pill" onclick="togglePassword(event);">
+                                                    <i class="fa fa-eye d-none show"></i>
+                                                    <i class="fa fa-eye-slash hide"></i>
+                                                </span>
+                                            </div>
+                                            <div id="account_users">
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center mt-3">
+                                                <button type="submit" class="btn rounded-pill ps-5 pe-5">Soumettre</button>
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <small class="response"></small>
+                                            </div>
+                                        </form>
+                                        <div class="mt-3">
+                                            <small class="context-menu" id="delete-account-link" style="color: #ff0000a1;"><u>Supprimer votre compte ?</u></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- New password Modal -->
+                        <div class="modal fade" id="new-password-modal" tabindex="-1" role="dialog" aria-labelledby="new-password-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title">Nouveau mot de passe</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="new-password-form">
+                                            <div class="mb-3 mt-3 position-relative input-group align-items-center">
+                                                <input type="password" class="form-control input rounded-pill" name="password" placeholder="Mot de passe" required>
+                                                <span class="position-absolute end-0 input-group-text rounded-pill" onclick="togglePassword(event);">
+                                                    <i class="fa fa-eye d-none show"></i>
+                                                    <i class="fa fa-eye-slash hide"></i>
+                                                </span>
+                                            </div>
+                                            <div class="mb-3 mt-3 position-relative input-group align-items-center">
+                                                <input type="password" class="form-control input rounded-pill" name="password-again" placeholder="Mot de passe" required>
+                                                <span class="position-absolute end-0 input-group-text rounded-pill" onclick="togglePassword(event);">
+                                                    <i class="fa fa-eye d-none show"></i>
+                                                    <i class="fa fa-eye-slash hide"></i>
+                                                </span>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center mt-3">
+                                                <button type="submit" class="btn btn-primary rounded-pill ps-5 pe-5">Soumettre</button>
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <small class="response"></small>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Change temp password Modal -->
+                        <div class="modal fade" id="change-temp-password-modal" data-bs-backdrop="static" data-bs-keyboard="false"  tabindex="-1" role="dialog" aria-labelledby="new-password-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h5 class="modal-title">Nouveau mot de passe</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="change-temp-password-form">
+                                            <div class="mb-3 mt-3 position-relative input-group align-items-center">
+                                                <input type="password" class="form-control input rounded-pill" name="password" placeholder="Mot de passe" required>
+                                                <span class="position-absolute end-0 input-group-text rounded-pill" onclick="togglePassword(event);">
+                                                    <i class="fa fa-eye d-none show"></i>
+                                                    <i class="fa fa-eye-slash hide"></i>
+                                                </span>
+                                            </div>
+                                            <div class="mb-3 mt-3 position-relative input-group align-items-center">
+                                                <input type="password" class="form-control input rounded-pill" name="password-again" placeholder="Mot de passe" required>
+                                                <span class="position-absolute end-0 input-group-text rounded-pill" onclick="togglePassword(event);">
+                                                    <i class="fa fa-eye d-none show"></i>
+                                                    <i class="fa fa-eye-slash hide"></i>
+                                                </span>
+                                            </div>
+                                            <div class="d-flex flex-row justify-content-center mt-3">
+                                                <button type="submit" class="btn btn-primary rounded-pill ps-5 pe-5">Soumettre</button>
+                                            </div>
+                                            <div class="mb-3 mt-3">
+                                                <small class="response"></small>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Confirmation modal -->
+                        <div class="modal fade" id="confirmation-modal" data-bs-backdrop="static" data-bs-keyboard="false"  tabindex="-1" role="dialog" aria-labelledby="confirmation-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header justify-content-center">
+                                    <h5 class="modal-title"></h5>
+                                    </div>
+                                    <div class="modal-body d-flex flex-row justify-content-around align-items-center">
+                                        <div class="d-flex flex-row justify-content-center mt-3">
+                                            <button type="button" class="btn btn-primary rounded-pill ps-5 pe-5" id="cancel">Annuler</button>
+                                        </div>
+                                        <div class="d-flex flex-row justify-content-center mt-3">
+                                            <button type="button" class="btn btn-primary rounded-pill ps-5 pe-5" id="ok">Confirmer</button>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 mt-3 text-center">
+                                        <small class="response"></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Game rules Modal -->
+                        <div class="modal fade" id="game-rules-modal" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="game-rules-modal" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                    <h1 class="modal-title w-100 text-center">LES RÈGLES DU JEU</h1>
+                                    </div>
+                                    <div class="modal-body mt-3 d-flex flex-column align-items-center">
+                                        <p class="text-center m-0" style="width: 65%;">Le jeu est composé de <span>5 niveaux</span> comprenant chacun plusieurs challenges :</p>
+                                        <div class="row d-flex flex-row rounded-3 w-75 medals-list p-3 mt-5 mb-5">
+                                            <div class="col">
+                                                <img src="./img/bronze_pending.png"></img>
+                                                <p class="text-white">Bronze</p>
+                                            </div>
+                                            <div class="col">
+                                                <img src="./img/silver_pending.png"></img>
+                                                <p class="text-white">Silver</p>
+                                            </div>
+                                            <div class="col">
+                                                <img src="./img/gold_pending.png"></img>
+                                                <p class="text-white">Gold</p>
+                                            </div>
+                                            <div class="col">
+                                                <img src="./img/emerald_pending.png"></img>
+                                                <p class="text-white">Emerald</p>
+                                            </div>
+                                            <div class="col">
+                                                <img src="./img/diamond_pending.png"></img>
+                                                <p class="text-white">Diamond</p>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex flex-row p-3">
+                                            <div class="col-7">
+                                                <p>Ton objectif est d’obtenir le maximum de bonnes réponses. Il te faudra au minimum <span>80%</span> de bonnes réponses à chaque challenge afin de pouvoir nourrir ton personnage et accéder aux différents niveaux.</p>
+                                                <img src="./img/arrow.svg"></img>
+                                            </div>
+                                            <div class="col-5">
+                                                <img src="./img/screenshot_1.png" style="border: 10px solid rgba(59,209,248,1);"></img>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex flex-row p-3">
+                                            <div class="col-7">
+                                                <p>À chaque fin de challenge, tu auras la possibilité de répondre à une question bonus qui te permettra de gagner des points.</p>
+                                                <img src="./img/arrow.svg"></img>
+                                            </div>
+                                            <div class="col-5">
+                                                <img src="./img/screenshot_2.png" style="border: 10px solid rgba(58,134,248,1);"></img>
+                                            </div>
+                                        </div>
+                                        <div class="row d-flex flex-row p-3">
+                                            <div class="col-7">
+                                                <p>Tu pourras convertir ces points en indices pour les prochains challenges. Il te faudra <span>40 points</span> pour obtenir un indice. Tu pourras suivre tes progrès grâce à la rubrique <span>Ma progression.</span></p>
+                                                <img src="./img/arrow.svg"></img>
+                                            </div>
+                                            <div class="col-5">
+                                                <img src="./img/screenshot_3.png" style="border: 10px solid rgba(55,102,223,1);"></img>
+                                            </div>
+                                        </div>
+                                        <p>Tu remporteras <span>une médaille</span> à chaque fois qu’un niveau sera atteint.</p>
+                                        <div class="row d-flex flex-row w-75 justify-content-center">
+                                            <div style="width: 20%;">
+                                                <img src="./img/bronze_finished.png"></img>
+                                            </div>
+                                        </div>
+                                        <div class="btn btn-rounded mt-3" onclick="$('#game-rules-modal').modal('hide');">Ready? Let’s play!</div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="orientationWarning" class="homescreen">
+                            <h1 class="text-white fst-italic text-center display-4">Bienvenue ! Pour une meilleure expérience utilisateur, merci d'utiliser le mode paysage de votre appareil.</h1>
+                    </div>
+            </div>
+          
+          
+            <!-- Bootstrap 5 scripts -->
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        </body>
+        <script src="./api/config.js"></script>
+        <script src="./api/getUsers.js"></script>
+        <script src="./api/checkToken.js"></script>
+        <script src="./api/login.js"></script>
+        <script src="./api/createAccount.js"></script>
+        <script src="./api/editAccount.js"></script>
+        <script src="./api/deleteAccount.js"></script>
+        <script src="./api/changeUserProfile.js"></script>
+        <script src="./api/sendEmail.js"></script>
+        <script src="./api/newPassword.js"></script>
+        <script src="./js/homescreen.js"></script>
+</html>
+
